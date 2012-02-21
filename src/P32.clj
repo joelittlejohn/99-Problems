@@ -1,11 +1,6 @@
-(use 'clojure.set)
-
-(defn divisors [n] (reduce (fn [factors x] 
-                            (if (zero? (mod n x))
-                              (conj factors x)
-                              factors)) [] (range 2 (dec n))))
-
-(defn gcd [a b] (last (intersection (set (divisors a)) (set (divisors b)))))
+(defn gcd [a b] (if (zero? b) 
+                  a 
+                  (gcd b (mod a b))))
 
 
 (gcd 36 63)
