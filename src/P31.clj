@@ -1,5 +1,3 @@
-(use 'clojure.contrib.math)
-
 (defn isprime? [n] (empty? (reduce (fn [factors x] 
                             (if (zero? (mod n x))
                               (conj factors x)

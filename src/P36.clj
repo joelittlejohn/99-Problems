@@ -8,6 +8,6 @@
                           (let [lowest-prime-factor (first (filter #(zero? (mod n %)) (filter isprime? (range 2 n))))]
                             (cons lowest-prime-factor (prime-factors (/ n lowest-prime-factor))))))
 
-(prime-factors 316)
-(prime-factors 9)
-(prime-factors 7)
+(defn prime-factor-multiplicity [n] (frequencies (prime-factors n)))
+
+(prime-factor-multiplicity 315)
