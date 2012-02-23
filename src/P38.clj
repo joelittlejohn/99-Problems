@@ -1,5 +1,11 @@
 (use 'clojure.contrib.math)
 
+(defn coprime [a b] (= 1 (if (zero? b) 
+                           a 
+                           (gcd b (mod a b)))))
+
+(defn totient [a] (count (filter #(coprime a %) (range 1 a))))
+
 (defn isprime? [n] (empty? (reduce (fn [factors x] 
                              (if (zero? (mod n x))
                                (conj factors x)
@@ -12,9 +18,15 @@
 
 (defn prime-factor-multiplicity [n] (frequencies (prime-factors n)))
 
-(defn phi [n] (reduce 
+(defn phi [n primes] (reduce 
                 #(let [p (first %2) m (last %2)]
                    (* %1 (* (- p 1) (expt p (- m 1)))))
-                1 (prime-factor-multiplicity n)))
+                1 primes))
 
-(phi 315)
+(time (totient 10090)) 
+
+;total phi time, include calculation of primes
+(time (phi 10090 (prime-factor-multiplicity 10090)))
+
+;phi time with pre-calculated primes
+(let [primes (prime-factor-multiplicity 10090)] (time (phi 10090 primes)))
