@@ -1,3 +1,5 @@
+(use 'P09)
+
 (defn pack[s] (loop [head (first s) tail (rest s) current [] result []]
                 (cond
                   (nil? head) result

@@ -1,9 +1,10 @@
 (use 'clojure.contrib.math)
 
-(defn isprime? [n] (empty? (reduce (fn [factors x] 
-                             (if (zero? (mod n x))
-                               (conj factors x)
-                               factors)) [] (range 2 n))))
+(defn isprime? [n] (and (> n 1) 
+                        (empty? (reduce (fn [factors x]
+                                          (if (zero? (mod n x))
+                                            (conj factors x)
+                                            factors)) [] (range 2 n)))))
 
 (defn prime-factors [n] (if (isprime? n)
                           (list n)
