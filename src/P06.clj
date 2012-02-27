@@ -1,1 +1,1 @@
-(defn ispalindrome[s] (= s (reverse s)))
+(defn ispalindrome [s] (= s (reverse s)))

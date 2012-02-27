@@ -1,4 +1,4 @@
-(defn pack[s] (loop [head (first s) tail (rest s) current [] result []]
+(defn pack [s] (loop [head (first s) tail (rest s) current [] result []]
                 (cond
                   (nil? head) result
                   (= head (first tail)) (recur (first tail) (rest tail) (conj current head) result)

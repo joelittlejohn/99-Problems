@@ -1,11 +1,6 @@
-(defn combinations [k s]
-  (cond
-    (> k (count s)) nil        ;not enough items in the sequence to form a valid combination
-    (= k (count s)) [s]        ;only one combination available: all items 
-    (= 1 k) (map vector s)     ;every item (on its own) is a valid combination
-    :else (reduce concat (map-indexed 
-            (fn [i x] (map #(cons x %) (combinations (dec k) (drop (inc i) s)))) 
-            s))))
+(use 'clojure.pprint)
+
+(require 'P26)
 
 (defn group [ks s]
   (cond

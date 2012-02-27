@@ -1,4 +1,4 @@
-(defn decode[s] (loop [head (first s) tail (rest s) result []] 
+(defn decode [s] (loop [head (first s) tail (rest s) result []] 
                   (cond 
                     (nil? head) result
                     (coll? head) (recur (first tail) (rest tail) (into result (repeat (first head) (last head))))

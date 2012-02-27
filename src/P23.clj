@@ -1,6 +1,5 @@
-(defn remove-at[n s]
-  [(keep-indexed #(if (not= n %1) %2) s) (nth s n nil)])
-
+(require 'P20)
+  
 (defn remove-random[s]
   (remove-at (rand-nth (range 0 (count s))) s))
 

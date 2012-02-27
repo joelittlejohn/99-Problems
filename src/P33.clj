@@ -1,3 +1,5 @@
+(require 'P32)
+
 (defn coprime [a b] (= 1 (if (zero? b) 
                            a 
                            (gcd b (mod a b)))))
